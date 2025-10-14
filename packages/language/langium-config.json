@@ -1,0 +1,16 @@
+{
+    "projectName": "BoardRace",
+    "languages": [
+        {
+            "id": "board-race",
+            "grammar": "src/board-race.langium",
+            "fileExtensions": [
+                "br"
+            ],
+            "textMate": {
+                "out": "syntaxes/board-race.tmLanguage.json"
+            }
+        }
+    ],
+    "out": "src/generated"
+}

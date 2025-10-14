@@ -1,0 +1,21 @@
+game Classic {
+  board {
+    cells = 63;
+
+    //
+    goose 5, 9, 14, 18, 23, 27, 32, 36, 41, 45, 50, 54, 59;
+
+    // grilles spécialle
+    cell 6:  jump to 12;       
+    cell 19: lose 1 turns;     
+    cell 31: stuck;            
+    cell 42: move -3;          
+    cell 58: jump to 1;        
+    cell 63: win;            
+  }
+
+  rules {
+    dice = 2d6;
+    overflow = bounce;        
+  }
+}
