@@ -1,0 +1,33 @@
+game Variant1 {
+
+  players {
+    player Alice color="pink"
+    player Bob color="blue"
+    player Charlie color="purple"
+  }
+
+  board {
+    cells = 63;
+
+    cell 4 : jump to 9
+    cell 18 : lose 1 turns
+    cell 12 : repeat
+    cell 49 : move -2
+    cell 63 : win
+
+    goose 5, 9, 14, 18, 23, 27, 32, 36, 41, 45, 50, 54, 59;          
+  }
+
+  rules {
+    dice = 2d4; // CT
+    overflow = bounce;     // CT 
+  }
+
+  layout {
+    pathType = 'snake'
+  }
+
+  ui {
+    uiTheme = 'bright'
+  }
+}
