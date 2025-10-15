@@ -1,5 +1,10 @@
 game Classic {
   board {
+
+    players {
+    player Alice color="red" type=human;
+    player Bob color="blue" type=ai;
+    }
     cells = 63;
 
     //
@@ -7,8 +12,7 @@ game Classic {
 
     // grilles spécialle
     cell 6:  jump to 12;       
-    cell 19: lose 1 turns;     
-    cell 31: stuck;            
+    cell 19: lose 1 turns;              
     cell 42: move -3;          
     cell 58: jump to 1;        
     cell 63: win;            
@@ -17,5 +21,13 @@ game Classic {
   rules {
     dice = 2d6;
     overflow = bounce;        
+  }
+
+  layout {
+    pathType = spiral;
+  }
+
+  ui {
+    uiTheme = bright;
   }
 }

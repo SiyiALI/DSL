@@ -12,11 +12,26 @@ hidden terminal SL_COMMENT: /\/\/[^\n\r]*/;
 
 entry Game:
     'game' name=ID '{'
+        players=Players
         board=Board
         rules=Rules?
         layout=Layout?
         ui=UI?
     '}';
+
+Players:
+    'players' '{'
+        players+=Player+
+    '}';
+
+Player:
+    'player' name=ID
+    ('color' '=' color=STRING)?
+    //('type' '=' type=PlayerType)?
+    ';'
+;
+
+//PlayerType returns string: 'human' | 'ai';
 
 Board:
     'board' '{'
