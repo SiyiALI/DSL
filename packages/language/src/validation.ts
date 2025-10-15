@@ -34,7 +34,7 @@ export class BoardRaceValidator {
             );
         }
     }
-
+     
     checkWinEffectPosition(board: Board, accept: ValidationAcceptor): void {
     const lastIndex = board.size;
 
