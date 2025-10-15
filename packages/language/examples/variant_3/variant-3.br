@@ -1,0 +1,29 @@
+game SpiralLabyrinth_CT3 {
+    players {
+        // Deux joueurs pour un duel stratégique dans le labyrinthe
+        player Ariane color = "White"; 
+        player Theseus color = "Black"; 
+    }
+    board {
+        cells = 70; // Taille moyenne pour une exploration significative
+
+        // Zone 1 : Accès rapide au centre (Opportunité)
+        cell 15: jump to 50; // CT : Long saut central. Risque d'être manqué si le dé est trop petit.
+        
+        // Zone 2 : Recul et Piège (Risque)
+        cell 35: move -10; // CT : Recul punitif, renvoyant l'adversaire de la zone médiane vers le début.
+        
+        // Zone 3 : Stagnation (Risque)
+        cell 55: lose 2 turns; // Pénalité de blocage, très frustrante si l'on est proche de la fin.
+        
+        // Fin de jeu
+        cell 70: win;
+    }
+    rules {
+        dice = 1d10; // Dé puissant : Les grands mouvements sont nécessaires pour utiliser le 'jump' et éviter les zones dangereuses rapidement.
+        overflow = exact; // CT : Force la précision à la fin, augmentant la tension du duel.
+    }
+    layout {
+        pathType = spiral;
+    }
+}
