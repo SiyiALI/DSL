@@ -1,0 +1,28 @@
+game NightSprint_RT1 {
+    players {
+        player Ghost color = "Grey"; 
+        player Shadow color = "Black";
+    }
+    board {
+        cells = 35; // RT : Plateau très court pour garantir une durée de partie minimale (sprint).
+    
+        // Case bonus de relance pour maintenir le rythme élevé.
+        cell 10: repeat; 
+        
+        // Saut important pour "brûler" une grande partie du parcours en un seul coup.
+        cell 20: jump to 30; 
+        
+        // La case finale
+        cell 35: win;
+    }
+    rules {
+        dice = 1d12; // RT : Dé puissant (jusqu'à 12 cases) pour maximiser les déplacements et la vitesse.
+        overflow = stop; // Stop pour éviter le rebond (bounce) qui ralentirait le jeu inutilement.
+    }
+    layout {
+        pathType = snake; // Serpentin classique pour une progression claire.
+    }
+    ui {
+        uiTheme = dark; // RT : L'élément clé de l'expérience, instaurant une ambiance sombre et intense.
+    }
+}
