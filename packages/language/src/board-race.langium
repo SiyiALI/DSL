@@ -1,7 +1,6 @@
 grammar BoardRace
 
 hidden terminal COMMENT: /\/\/[^\n]*|\/\*[^*]*\*+([^/*][^*]*\*+)*\//;
-
 hidden terminal WS: /\s+/;
 terminal ID: /[_a-zA-Z][\w_]*/;
 terminal INT returns number: /[0-9]+/;
@@ -15,6 +14,8 @@ entry Game:
     'game' name=ID '{'
         board=Board
         rules=Rules?
+        layout=Layout?
+        ui=UI?
     '}';
 
 Board:
@@ -23,7 +24,6 @@ Board:
         (specials+=SpecialCell | groups+=GooseGroup)*
     '}';
 
-//grille spécialle avec des règles
 SpecialCell:
     'cell' index=INT ':' effect=Effect ';';
 
@@ -35,11 +35,11 @@ Effect:
     | Win
 ;
 
-Jump:    'jump' 'to' target=INT;              // aller à case numéro n
-Move:    'move' offset=SIGNED_INT;            // avancer/reculer n cases
-Lose:    'lose' turns=INT 'turns';            // bloquer n ronds
-Repeat returns string  :'repeat';              // dé +1
-Win returns string : 'win';                    // gagné
+Jump:    'jump' 'to' target=INT;
+Move:    'move' offset=SIGNED_INT;
+Lose:    'lose' turns=INT 'turns';
+Repeat returns string: 'repeat';
+Win returns string: 'win';
 
 GooseGroup:
     'goose' cells+=INT (',' cells+=INT)* ';';
@@ -50,11 +50,23 @@ Rules:
         ('overflow' '=' overflow=Overflow ';')?
     '}';
 
-// dé
 Dice:
       faces=INT
     | count=INT 'd' faces=INT
 ;
 
-// Manipulation après la ligne d'arrivée :rebond ou stoppe sauf dé exacte ou gagné directement
-Overflow returns string:   'bounce' | 'exact' | 'stop';
+Overflow returns string: 'bounce' | 'exact' | 'stop';
+
+Layout:
+    'layout' '{'
+        'pathType' '=' path=PathType ';'
+    '}';
+
+PathType returns string: 'snake' | 'spiral';
+
+UI:
+    'ui' '{'
+        'uiTheme' '=' theme=UITheme ';'
+    '}';
+
+UITheme returns string: 'bright' | 'dark';
