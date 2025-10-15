@@ -2,12 +2,11 @@ game Classic {
   board {
 
     players {
-    player Alice color="red" type=human;
-    player Bob color="blue" type=ai;
+    player Alice color="red";
+    player Bob color="blue";
     }
     cells = 63;
 
-    //
     goose 5, 9, 14, 18, 23, 27, 32, 36, 41, 45, 50, 54, 59;
 
     // grilles spécialle

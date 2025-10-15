@@ -1,0 +1,39 @@
+// RT-2 : Le Marathon Lumineux (Vitesse faible et Thème Bright)
+// -----------------------------------------------------------
+// Une expérience lente et longue, avec un plateau clair et agréable.
+// Les joueurs progressent doucement sur 120 cases.
+// Vitesse faible : 1 dé à 6 faces, grande taille de plateau.
+// Thème lumineux : interface claire (bright).
+
+game BrightMarathon {
+
+  players {
+    player Hope color="Cyan" type=human;
+    player Joy color="Orange" type=human;
+    player Light color="Pink" type=ai;
+  }
+
+  board {
+    cells = 120; // RT : Grande taille = progression lente, marathon
+
+    //cases spéciales
+    cell 25: move -3;          
+    cell 50: lose 2 turns;    
+    cell 75: move -5;       
+    cell 100: move -10;         
+    cell 120: win;            
+  }
+
+  rules {
+    dice = 1d6;               
+    overflow = exact;           
+  }
+
+  layout {
+    pathType = snake;         
+  }
+
+  ui {
+    uiTheme = bright;         
+  }
+}
