@@ -1,0 +1,22 @@
+game DominoGooseRun {
+    players {
+        player Carole color = "Green";
+        player David color = "Yellow";
+        player Eve color = "Purple";
+    }
+    board {
+        cells = 45;
+        goose 5, 6;
+        goose 12, 13, 14;
+        goose 25, 26;
+        goose 38, 39, 40; // CT : Groupes d'oies très denses
+        cell 45: win;
+    }
+    rules {
+        dice = 1d6;
+        overflow = stop;
+    }
+    layout {
+        pathType = spiral;
+    }
+}
