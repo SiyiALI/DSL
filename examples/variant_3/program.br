@@ -1,4 +1,4 @@
-game SpiralLabyrinth_CT3 {
+game Variant3 {
     players {
         // Deux joueurs pour un duel stratégique dans le labyrinthe
         player Ariane color = "White"; 

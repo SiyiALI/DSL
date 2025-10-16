@@ -1,5 +1,5 @@
 import type { ValidationAcceptor } from 'langium';
-import type { Board, Game } from './generated/ast.js';
+import type { Board, Game } from '../../lang/generated/ast.js';
 
 export function registerBoardRaceValidationChecks(services: any) {
     const registry = services.validation.ValidationRegistry;

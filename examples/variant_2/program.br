@@ -1,4 +1,4 @@
-game DominoGooseRun {
+game Variant2 {
     players {
         player Carole color = "Green";
         player David color = "Yellow";

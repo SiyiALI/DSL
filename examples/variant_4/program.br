@@ -1,4 +1,4 @@
-game NightSprint_RT1 {
+game Variant4 {
     players {
         player Ghost color = "Bleu"; 
         player Shadow color = "Rouge";

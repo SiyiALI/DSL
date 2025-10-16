@@ -1,0 +1,97 @@
+@startuml
+' Métamodèle ajusté pour la grammaire Langium fournie
+
+class Game {
+  +name: String
+}
+
+class Players {
+}
+
+class Player {
+  +name: String
+  +color: String
+}
+
+class Board {
+  +size: int
+}
+
+class SpecialCell {
+  +index: int
+  +effect: Effect
+}
+
+abstract class Effect {
+}
+
+class Jump {
+  +target: int
+}
+class Move {
+  +offset: int
+}
+class Lose {
+  +turns: int
+}
+class Repeat {
+}
+class Win {
+}
+
+
+class Rules {
+}
+
+class Dice {
+  +count: int
+  +faces: int
+}
+
+enum Overflow {
+  bounce
+  exact
+  stop
+}
+
+class Layout {
+  +pathType: PathType
+}
+
+enum PathType {
+  snake
+  spiral
+}
+
+class UI {
+  +uiTheme: UITheme
+}
+
+enum UITheme {
+  bright
+  dark
+}
+
+' Relations
+Game "1" -- "1" Players : contient
+Players "1" -- "*" Player : possède
+
+Game "1" -- "1" Board : contient
+Board "1" -- "*" SpecialCell : contient
+
+Game "1" -- "1" Rules : contient
+Rules "0..1" -- "1" Dice : définit
+Rules "0..1" -- "1" Overflow : définit
+
+SpecialCell "1" -- "1" Effect : définit
+
+Effect <|-- Jump
+Effect <|-- Move
+Effect <|-- Lose
+Effect <|-- Repeat
+Effect <|-- Win
+
+Game "0..1" -- "1" Layout : optionnel
+Game "0..1" -- "1" UI : optionnel
+
+@enduml

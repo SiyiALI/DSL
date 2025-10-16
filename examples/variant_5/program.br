@@ -1,5 +1,5 @@
 
-game BrightMarathon {
+game Variant5 {
 
   players {
     player Hope color="Cyan" type=human;

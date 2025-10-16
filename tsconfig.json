@@ -19,7 +19,7 @@
   "include": [
      "**/src/**/*",
      "**/test/**/*"
-  ],
+, "lang/generated", "lang/board-race-module.ts", "lang/board-race-validator.ts", "lang/index.ts", "src/language/validation.ts"  ],
   "exclude": [
      "**/lib/**/*",
      "**/out/**/*",
