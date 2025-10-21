@@ -67,6 +67,15 @@ DSL/
 └── package.json
 ````
 
----
+Depuis la racine du projet:
+- Les 5 exemples se trouvent dans le dossier `examples`.
+- Les validations se trouvent dans le fichier `src/language/validations.ts`
+- Les notes de variabilité se trouvent dans le fichier `docs/variability.md`
 
+### Instructions
 
+Conmpiler le projet:
+
+```
+npm run langium:generator
+```
