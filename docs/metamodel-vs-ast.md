@@ -1,6 +1,7 @@
+# Métamodèle ↔ AST
+
 | Concept du métamodèle | Noeud/propriété dans l'AST | Remarques |
 |---|---|---|
-| Concept du métamodèle | Noeud / Propriété dans l’AST Langium | Remarques / Détails de correspondance |
 | Game                    | Game (interface)                      | Règle d’entrée principale du langage.     |
 | name: String            | Game.name: string                     | Correspondance directe.                   |
 | players: Players        | Game.players: Players                 | Relation de composition.                  |
@@ -40,4 +41,4 @@
 | PathType (énumération) | type PathType = 'snake' | 'spiral' | Énumération traduite en union de chaînes. |
 | UI | UI (interface) | Configuration de l’interface utilisateur. |
 | uiTheme: UITheme | UI.theme: UITheme | Thème de l’interface. |
-| UITheme (énumération) | type UITheme = 'bright' | 'dark' | Énumération traduite en union de chaînes. |
+| UITheme (énumération) | type UITheme = 'bright' / 'dark' | Énumération traduite en union de chaînes. |
