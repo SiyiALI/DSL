@@ -28,7 +28,7 @@
 
 ## 3. Scénarios d’usage
 
-### **Scénario 1 **
+### **Scénario 1**
 
 **Paramètres CT :**
 
