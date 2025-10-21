@@ -20,7 +20,6 @@ export const BoardRaceTerminals = {
 export type BoardRaceTerminalNames = keyof typeof BoardRaceTerminals;
 
 export type BoardRaceKeywordNames =
-    | ","
     | ":"
     | ";"
     | "="
@@ -35,7 +34,6 @@ export type BoardRaceKeywordNames =
     | "dice"
     | "exact"
     | "game"
-    | "goose"
     | "jump"
     | "layout"
     | "lose"
@@ -62,14 +60,12 @@ export type BoardRaceTokenNames = BoardRaceTerminalNames | BoardRaceKeywordNames
 export interface Board extends langium.AstNode {
     readonly $container: Game;
     readonly $type: 'Board';
-    groups: Array<GooseGroup>;
     size: number;
     specials: Array<SpecialCell>;
 }
 
 export const Board = {
     $type: 'Board',
-    groups: 'groups',
     size: 'size',
     specials: 'specials'
 } as const;
@@ -127,21 +123,6 @@ export const Game = {
 
 export function isGame(item: unknown): item is Game {
     return reflection.isInstance(item, Game.$type);
-}
-
-export interface GooseGroup extends langium.AstNode {
-    readonly $container: Board;
-    readonly $type: 'GooseGroup';
-    cells: Array<number>;
-}
-
-export const GooseGroup = {
-    $type: 'GooseGroup',
-    cells: 'cells'
-} as const;
-
-export function isGooseGroup(item: unknown): item is GooseGroup {
-    return reflection.isInstance(item, GooseGroup.$type);
 }
 
 export interface Jump extends langium.AstNode {
@@ -320,7 +301,6 @@ export type BoardRaceAstType = {
     Dice: Dice
     Effect: Effect
     Game: Game
-    GooseGroup: GooseGroup
     Jump: Jump
     Layout: Layout
     Lose: Lose
@@ -337,10 +317,6 @@ export class BoardRaceAstReflection extends langium.AbstractAstReflection {
         Board: {
             name: Board.$type,
             properties: {
-                groups: {
-                    name: Board.groups,
-                    defaultValue: []
-                },
                 size: {
                     name: Board.size
                 },
@@ -389,16 +365,6 @@ export class BoardRaceAstReflection extends langium.AbstractAstReflection {
                 },
                 ui: {
                     name: Game.ui
-                }
-            },
-            superTypes: []
-        },
-        GooseGroup: {
-            name: GooseGroup.$type,
-            properties: {
-                cells: {
-                    name: GooseGroup.cells,
-                    defaultValue: []
                 }
             },
             superTypes: []

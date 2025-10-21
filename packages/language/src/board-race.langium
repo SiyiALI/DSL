@@ -27,16 +27,13 @@ Players:
 Player:
     'player' name=ID
     ('color' '=' color=STRING)?
-    //('type' '=' type=PlayerType)?
     ';'
 ;
-
-//PlayerType returns string: 'human' | 'ai';
 
 Board:
     'board' '{'
         'cells' '=' size=INT ';'
-        (specials+=SpecialCell | groups+=GooseGroup)*
+        specials+=SpecialCell*
     '}';
 
 SpecialCell:
@@ -55,9 +52,6 @@ Move:    'move' offset=SIGNED_INT;
 Lose:    'lose' turns=INT 'turns';
 Repeat returns string: 'repeat';
 Win returns string: 'win';
-
-GooseGroup:
-    'goose' cells+=INT (',' cells+=INT)* ';';
 
 Rules:
     'rules' '{'
