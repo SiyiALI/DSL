@@ -32,6 +32,7 @@ Player:
 
 Board:
     'board' '{'
+        ('start' '=' startCell=INT ';')?  
         'cells' '=' size=INT ';'
         specials+=SpecialCell*
     '}';
@@ -56,12 +57,19 @@ Win returns string: 'win';
 Rules:
     'rules' '{'
         ('dice' '=' dice=Dice ';')?
+        ('startRule' '=' startRule=StartRule ';')?   
         ('overflow' '=' overflow=Overflow ';')?
     '}';
 
 Dice:
       faces=INT
     | count=INT 'd' faces=INT
+;
+
+StartRule:
+    'any' '==' startValue=INT       
+  | 'sum' '>=' minTotal=INT         
+  | 'exact' '==' startValue=INT     
 ;
 
 Overflow returns string: 'bounce' | 'exact' | 'stop';
